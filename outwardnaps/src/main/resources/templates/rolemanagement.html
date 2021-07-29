@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- BEGIN HEAD -->
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta name="description" content="Responsive Admin Template" />
+<meta name="author" content="SmartUniversity" />
+<title>NAPS</title>
+<!-- google font -->
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+	rel="stylesheet" type="text/css" />
+<!-- icons -->
+<link
+	href="dashboard/plugins/simple-line-icons/simple-line-icons.min.css"
+	rel="stylesheet" type="text/css" />
+<link href="dashboard/plugins/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- bootstrap -->
+<link href="dashboard/plugins/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- data tables -->
+<link
+	href="dashboard/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.css"
+	rel="stylesheet" type="text/css" />
+<!-- Material Design Lite CSS -->
+<link rel="stylesheet"
+	href="dashboard/plugins/material/material.min.css" />
+<link rel="stylesheet" href="dashboard/css/material_style.css" />
+<!-- animation -->
+<link href="dashboard/css/pages/animate_page.css" rel="stylesheet" />
+<!-- Template Styles -->
+<link href="dashboard/css/style.css" rel="stylesheet" type="text/css" />
+<link href="dashboard/css/plugins.min.css" rel="stylesheet"
+	type="text/css" />
+<link href="dashboard/css/responsive.css" rel="stylesheet"
+	type="text/css" />
+<link href="dashboard/css/theme-color.css" rel="stylesheet"
+	type="text/css" />
+<!-- favicon -->
+<link rel="shortcut icon" href="dashboard/img/favicon.ico" />
+</head>
+<style type="text/css">
+@font-face {
+	font-family: FedraSansStdLight;
+	src: url(dashboard/font/FedraSansStd-LightLF.otf);
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p {
+	font-family: inherit;
+	font-weight: 400;
+	line-height: 1.71429;
+}
+
+body {
+	background: #fff;
+	color: #6a6d71;
+	font-family: 'FedraSansStdLight';
+	font-weight: normal;
+	color: #000000;
+	height: 100%;
+}
+</style>
+<!-- END HEAD -->
+<body
+	class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+	<div class="page-wrapper">
+		<!-- start header -->
+		<div class="page-header navbar navbar-fixed-top">
+			<div class="page-header-inner ">
+				<!-- logo start -->
+				<div class="page-logo"></div>
+				<!-- logo end -->
+				<ul class="nav navbar-nav navbar-left in">
+					<li><a href="#" class="menu-toggler sidebar-toggler"><i
+							class="icon-menu"></i></a></li>
+				</ul>
+				<div class="hor-menu   hidden-sm hidden-xs"></div>
+				<!-- search bar -->
+
+				<!-- start mobile menu -->
+				<a href="javascript:;" class="menu-toggler responsive-toggler"
+					data-toggle="collapse" data-target=".navbar-collapse"> <span></span>
+				</a>
+				<!-- end mobile menu -->
+				<!-- start header menu -->
+				<div class="top-menu">
+					<ul class="nav navbar-nav pull-right">
+						<li class="dropdown dropdown-extended dropdown-inbox"
+							id="header_inbox_bar"><a href="/payment-portal/logout">Logout</a></li>
+						<!-- end message dropdown -->
+						<!-- start manage user dropdown -->
+						<li class="dropdown dropdown-user"><a href="javascript:;"
+							class="dropdown-toggle" data-toggle="dropdown"
+							data-hover="dropdown" data-close-others="true"> <img alt=""
+								class="img-circle " src="dashboard/img/logo.jpg" />
+						</a></li>
+						<!-- end manage user dropdown -->
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- end header -->
+		<!-- start page container -->
+		<div class="page-container">
+			<!-- start sidebar menu -->
+			<div class="sidebar-container">
+				<div class="sidemenu-container navbar-collapse collapse fixed-menu">
+					<div id="remove-scroll">
+						<ul class="sidemenu page-header-fixed p-t-20"
+							data-keep-expanded="false" data-auto-scroll="true"
+							data-slide-speed="200">
+							<li class="sidebar-toggler-wrapper hide">
+								<div class="sidebar-toggler">
+									<span></span>
+								</div>
+							</li>
+							<li class="sidebar-user-panel">
+								<div class="user-panel">
+									<div class="row">
+										<div class="sidebar-userpic">
+											<img src="dashboard/img/dp.jpg" class="img-responsive" alt="" />
+										</div>
+									</div>
+									<div class="profile-usertitle">
+										<div class="sidebar-userpic-name" th:text="${session.loginuser.userName}">John
+											Deo</div>
+										<div class="profile-usertitle-job" th:text="${session.loginuser.userRole.roleDescription}">Manager</div>
+									</div>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- end sidebar menu -->
+			<!-- start page content -->
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<div class="page-bar">
+						<div class="page-title-breadcrumb">
+							<div class=" pull-left">
+								<div class="page-title">Internal Users List</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+								<div class="card-head">
+									<header>Role Management</header>
+									<input type="hidden" id="mode" name="mode" th:value="${mode}" />
+								</div>
+								<div class="card-body ">
+									<div class="table-scrollable">
+										<table id="example1" class="display full-width">
+											<button type="button" class="mdl-button  m-b-10 btn-primary"
+												data-toggle="modal" data-target="#modalLoginAvatarDemo">
+												<i class="material-icons">add</i>Add New
+											</button>
+											<thead>
+												<tr>
+													<th>Name</th>
+													<th>Status</th>
+													<th>Privilege</th>
+													<th>Authoriser Level</th>
+													<th>Delete</th>
+													<th>Action</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="detail,iterationStatus  : ${internalusers}">
+													<td style="text-align: left;" th:text="${detail.userName}"></td>
+													<td style="text-align: left;"
+														th:text="${detail.status.description}"></td>
+													<td style="text-align: left;"
+														th:text="${detail.userRole.roleDescription}"></td>
+													<td style="text-align: center;"
+														th:text="${detail.level}"></td>
+													<td style="text-align: left;" th:text="${detail.deleteFlg}"></td>
+													<td><a th:href="@{/editUser(id=${detail.id})}"
+														class="btn btn-success btn-xs "> <i
+															class="fa fa-pencil"></i>
+													</a> <a th:href="@{/deleteUser(id=${detail.id})}"
+														class="btn btn-danger btn-xs"> <i
+															class="fa fa-trash-o "></i>
+													</a></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end page content -->
+		</div>
+		<!-- end page container -->
+		<!--Modal Form Login with Avatar Demo-->
+		<div class="modal fade" id="modalLoginAvatarDemo" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog cascading-modal modal-avatar modal-sm"
+				role="document" style="margin-top: 200px;">
+				<!--Content-->
+				<div class="modal-content" style="border-radius: 8px;">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class=" ">
+								<div class="card-head">
+									<header>Add New Role</header>
+								</div>
+								<div class="card-body " id="bar-parent10">
+									<form th:action="@{/updateUser}" method="post"
+										th:object="${user}">
+										<div class="form-group row">
+											<label class="col-lg-3 col-md-4 control-label">Name </label>
+											<div class="col-lg-9 col-md-8">
+												<input type="email" class="form-control" id="userId"
+													name="userName" placeholder="User Email"
+													th:value="${user.userName}" required="required" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-lg-3 col-md-4 control-label">Privilege
+											</label>
+											<div class="col-lg-9 col-md-8">
+												<select name="userRoleId" id="userRoleId" class="form-control"
+													style="width: 100%; height: 100%;" th:field="*{userRoleId}">
+													<option th:each="role : ${internaluserroles}"
+														th:value="${role.id}" th:text="${role.roleDescription}" />
+												</select>
+											</div>
+										</div>
+										<div class="form-group row" id="level1">
+											<label class="col-lg-3 col-md-4 control-label">Auth
+												Level </label>
+											<div class="col-lg-9 col-md-8">
+												<select name="level" id="level"
+													style="width: 100%; height: 100%;" th:field="*{level}">
+													<option th:each="level : ${authorizerLevels}"
+														th:value="${level}" th:text="${level}" />
+												</select>
+											</div>
+										</div>
+										<button type="submit" class="mdl-button  m-b-10 btn-primary"
+											data-toggle="modal" data-target="#modalLoginAvatarDemo">Submit</button>
+										<button type="button"
+											class="mdl-button pull-right  m-b-10 btn-primary"
+											data-toggle="modal" data-target="#modalLoginAvatarDemo">Cancel</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--/.Content-->
+				</div>
+			</div>
+		</div>
+		<!--Modal Form Login with Avatar Demo-->
+		<div id="myModal" class="modal">
+			<div class="modal-dialog cascading-modal modal-avatar modal-sm"
+				role="document" style="margin-top: 200px;">
+				<!--Content-->
+				<div class="modal-content" style="border-radius: 8px;">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class=" ">
+								<div class="card-head">
+									<header>Edit Role</header>
+								</div>
+								<div class="card-body " id="bar-parent10">
+									<form th:action="@{/updateUser}" method="post"
+										th:object="${user}">
+										<input type="hidden" id="id" name="id" th:value="${user.id}" />
+										<div class="form-group row">
+											<label class="col-lg-3 col-md-4 control-label">Name </label>
+											<div class="col-lg-9 col-md-8">
+												<input type="email" class="form-control" id="userId"
+													name="userName" placeholder="User Email"
+													required="required" th:value="${user.userName}" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-lg-3 col-md-4 control-label">Privilege
+											</label>
+											<div class="col-lg-9 col-md-8">
+												<select name="userRoleId" id="userRoleId2" class="form-control"
+													style="width: 100%; height: 100%;" th:field="*{userRoleId}">
+													<option th:each="role : ${internaluserroles}"
+														th:value="${role.id}" th:text="${role.roleDescription}" />
+												</select>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-lg-3 col-md-4 control-label">Status
+											</label>
+											<div class="col-lg-9 col-md-8">
+												<select name="statusId" id="statusId" class="form-control"
+													style="width: 100%; height: 100%;" th:field="*{statusId}">
+													<option th:each="status : ${status}"
+														th:value="${status.status}"
+														th:text="${status.description}" />
+												</select>
+											</div>
+										</div>
+										<div class="form-group row" id="level2">
+											<label class="col-lg-3 col-md-4 control-label">Authorizer
+												Level </label>
+											<div class="col-lg-9 col-md-8">
+												<select name="level" id="level" class="form-control"
+												style="width: 100%; height: 100%;" th:field="*{level}">
+													<option th:each="level : ${authorizerLevels}"
+														th:value="${level}" th:text="${level}" />
+												</select>
+											</div>
+										</div>
+										<button type="submit" class="mdl-button   m-b-10 btn-primary"
+											data-toggle="modal" data-target="#modalEdit">Submit</button>
+										<button type="button"
+											class="mdl-button pull-right m-b-10 btn-primary"
+										 data-toggle="modal" data-target="#myModal">Cancel</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--/.Content-->
+				</div>
+			</div>
+		</div>
+		<!-- start footer -->
+		<footer class="footer">
+			<div class="w-100 clearfix">
+				<center>
+					<span class=" d-block text-center text-sm-left d-sm-inline-block">Copyright
+						© <script>
+							document.write("" + new Date().getFullYear());
+						</script>
+						Coronation Merchant Bank. All rights reserved.
+					</span>
+				</center>
+
+			</div>
+		</footer>
+		<!-- end footer -->
+	</div>
+	<!-- start js include path -->
+	<script src="dashboard/plugins/jquery/jquery.min.js"></script>
+	<script src="dashboard/plugins/popper/popper.min.js"></script>
+	<script src="dashboard/plugins/jquery-blockui/jquery.blockui.min.js"></script>
+	<script
+		src="dashboard/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<!-- bootstrap -->
+	<script src="dashboard/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!-- data tables -->
+	<script src="dashboard/plugins/datatables/jquery.dataTables.min.js"></script>
+	<script
+		src="dashboard/plugins/datatables/plugins/bootstrap/dataTables.bootstrap4.min.js"></script>
+	<script src="dashboard/js/pages/table/table_data.js"></script>
+	<!-- Common js-->
+	<script src="dashboard/js/app.js"></script>
+	<script src="dashboard/js/layout.js"></script>
+	<script src="dashboard/js/theme-color.js"></script>
+	<!-- Material -->
+	<script src="dashboard/plugins/material/material.min.js"></script>
+	<!-- animation -->
+	<script src="dashboard/js/pages/ui/animations.js"></script>
+	<!-- end js include path -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			var mode = $('#mode').val();
+			console.log("mode==", mode);
+			//var modal = document.getElementById('modalLoginAvatarDemo');
+			var modal = document.getElementById('myModal');
+			if (mode == 'edit') {
+				console.log("inside mode==", mode);
+				modal.style.display = "block";
+			}
+
+			$('#form3').change(function(event) {
+				var userId = $('#form3').val();
+				console.log("userId==", userId);
+				$('#userId').val(userId);
+
+			});
+
+			$('#form4').change(function(event) {
+				var pwd = $('#form4').val();
+				console.log("pwd==", pwd);
+				$('#password').val(pwd);
+
+			});
+
+			var role = $('#userRoleId').val();
+			var role2 = $('#userRoleId2').val();
+			var a = document.getElementById('level1');
+			var b = document.getElementById('level2');
+			console.log("role==", role);
+			console.log("role2==", role2);
+			if (role == 2) {
+				a.style.display = 'block';
+				b.style.display = 'block';
+			} else {
+				a.style.display = 'none';
+				b.style.display = 'none';
+			}
+			if (role2 == 2) {
+				//a.style.display = 'block';
+				b.style.display = 'block';
+			} else {
+				//a.style.display = 'none';
+				b.style.display = 'none';
+			}
+
+			$('#userRoleId').change(function(event) {
+				var role = $('#userRoleId').val();
+				var a = document.getElementById('level1');
+				var b = document.getElementById('level2');
+				console.log("role==", role);
+				if (role == 2) {
+					a.style.display = 'block';
+					b.style.display = 'block';
+				} else {
+					a.style.display = 'none';
+					b.style.display = 'none';
+				}
+
+			});
+
+			$('#userRoleId2').change(function(event) {
+				var role2 = $('#userRoleId2').val();
+				//var a = document.getElementById('level1');
+				var b = document.getElementById('level2');
+				console.log("role2==", role2);
+				if (role2 == 2) {
+					//a.style.display = 'block';
+					b.style.display = 'block';
+				} else {
+					//a.style.display = 'none';
+					b.style.display = 'none';
+				}
+
+			});
+
+		});
+	</script>
+</body>
+
+<!-- Mirrored from radixtouch.in/templates/admin/hotel/source/table_data.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 11 May 2018 15:23:56 GMT -->
+</html>

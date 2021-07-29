@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="ISO-8859-1" name="viewport"
+	content="width=device-width, initial-scale=1.0"></meta>
+<title>Asset Management Portal</title>
+<!-- Bootstrap -->
+<link type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+	media="screen" />
+<link type="text/css" href="css/home.css" rel="stylesheet"
+	media="screen" />
+<link rel="icon" type="image/x-icon" href="img/Capture2.jpg" />
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/login"> </a>
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">ASSET MANAGEMENT</a>
+			</div>
+			<input type="hidden" name="username" th:value="${session.username}" />
+			<input type="hidden" name="sessionId" th:value="${session.sessionId}" />
+			<input type="hidden" name="sessionObj" th:value="${session}" /> <input
+				type="hidden" name="sessionObj" th:value="${session.userrole}" />
+			<ul class="nav navbar-nav">
+				<li class="active"><a th:href="@{/}">Home</a></li>
+				<li class="dropdown" th:switch="${session.userrole}"><a
+					href="#" data-toggle="dropdown" class="dropdown-toggle">Menu
+						Items<b class="caret"></b>
+				</a>
+					<p th:case="'Customer Service Officer'">
+					<ul class="dropdown-menu">
+						<li><a href="#" th:href="@{/authorizePaymentDetail}">Verify
+								Subscription</a></li>
+					</ul>
+					</p>					
+					<p th:case="'*'">
+					<ul class="dropdown-menu">
+						<li><a
+							th:href="@{/paymentfw(fundType='Coronation Money Market Fund')}">Coronation
+								Money Market Fund</a></li>
+						<li><a
+							th:href="@{/paymentfw(fundType='Coronation Balanced Fund')}">Coronation
+								Balanced Fund</a></li>
+						<li><a
+							th:href="@{/paymentfw(fundType='Coronation Fixed Income Fund')}">Coronation
+								Fixed Income Fund </a></li>
+					</ul>
+					</p></li>
+
+				<!--  <li><a href="#">Page 2</a></li>-->
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+						Sign Up</a></li>
+				<li><a th:href="@{/}"><span
+						class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- <div class="container">
+		<h3>Right Aligned Navbar</h3>
+		<p>The .navbar-right class is used to right-align navigation bar
+			buttons.</p>
+	</div> -->
+	<!--div class="col-md-6" layout:fragment="content">
+		< h1>Welcome to Coronation Merchant Bank Asset Management Portal</h1-->
+	<div class="jumbotron hero-technology" layout:fragment="content">
+		<h1 class="hero-title">Coronation Merchant Bank Asset Management
+			Portal</h1>
+		<p class="hero-subtitle">This Portal is used for On-boarding and
+			payment. Use the above FUNDS Menu.</p>
+
+	</div>
+	<!-- /div> -->
+
+	<!-- <div layout:fragment="footer" th:replace="/fragments/footer :: footer">&copy; 2017 CMB
+		Application Development</div>-->
+
+	<!--script src="http://code.jquery.com/jquery.js"></script>-->
+	<script src="webjars/jquery/2.1.4/jquery.js"></script>
+	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

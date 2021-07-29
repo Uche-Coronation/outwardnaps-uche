@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="home">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Upload NAPS page</title>
+<!-- Bootstrap -->
+<link type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+	media="screen" />
+<link type="text/css" href="css/app.css" rel="stylesheet" media="screen" />
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+	<div layout:fragment="content" id="flex2">
+		<div class="outer1" style="margin-top: 1cm; margin-bottom: 1cm;">
+			<form action="#" th:action="@{/submitFile}" th:object="${uploadData}"
+				method="post" enctype="multipart/form-data">
+				<div class="form-group" style="margin-top: 0.3cm;">
+					<label class="control-label" for="residentialAddress">*Account
+						Number</label> <input class="form-control" type="text"
+						name="orderingPartyAccountNumber" id="orderingPartyAccountNumber"
+						placeholder="Account Number" required="required" />
+				</div>
+				<div class="form-group" style="margin-top: 0.3cm;">
+					<label class="control-label" for="residentialAddress">*Account
+						Name</label> <input class="form-control" type="text"
+						name="orderingPartyAccountName" id="orderingPartyAccountName"
+						readonly="readonly" required="required" />
+				</div>
+				<div class="form-group">
+					<label>Uploaded File*:</label> <input type="file"
+						class="form-control" name="file" required="required"
+						placeholder="Enter Applicant File" />
+				</div>
+
+
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/app-ajax.js" type="text/javascript"></script>
+	</div>
+</body>
+</html>

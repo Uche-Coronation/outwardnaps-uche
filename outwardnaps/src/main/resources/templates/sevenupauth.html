@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sevenup authorizer Page</title>
+</head>
+<body>
+<div align="center">
+<div align="right">
+<p><a href="/payment-portal/homeDashboard">Menu</a></p>
+</div>
+<h2>Pending Payments</h2>
+<table border="1">
+<thead>
+<tr>
+<th>Customer Name</th>
+<th>Account Number</th>
+<th>Customer Code</th>
+<th>Amount</th>
+<th>Invoice Number</th>
+<th>Status</th>
+<th>Authorize</th>
+<th>Decline</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="payment,iterationStatus  : ${payments}" th:if="${payments != null and !payments.empty}">
+<td th:text="${payment.customerName}"></td>
+<td th:text="${payment.accountNumber}"></td>
+<td th:text="${payment.customerCode}"></td>
+<td th:text="${payment.amount}"></td>
+<td th:text="${payment.invoiceNumber}"></td>
+<td th:text="${payment.status}"></td>
+<td><a th:href="@{/authorizePayment(id=${payment.paymentID})}">Approve</a></td>
+<td><a th:href="@{/declinePayment(id=${payment.paymentID})}">Decline</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>

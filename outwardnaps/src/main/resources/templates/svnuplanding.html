@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div align="center">
+<div align="left">
+<p><a th:href="@{/homeSevenup}">New Payment</a></p>
+</div>
+<div align="right">
+<p><a href="/payment-portal/homeDashboard">Menu</a></p>
+</div>
+<h2>Pending Payments</h2>
+<table border="1">
+<thead>
+<tr>
+<th>Customer Name</th>
+<th>Account Number</th>
+<th>Customer Code</th>
+<th>Amount</th>
+<th>Invoice Number</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="payment,iterationStatus  : ${payments}" th:if="${payments != null and !payments.empty}">
+<td th:text="${payment.customerName}"></td>
+<td th:text="${payment.accountNumber}"></td>
+<td th:text="${payment.customerCode}"></td>
+<td th:text="${payment.amount}"></td>
+<td th:text="${payment.invoiceNumber}"></td>
+<td th:text="${payment.status}"></td>
+</tr>
+</tbody>
+</table>
+<nav aria-label="Pagination" th:if="${payments.totalPages gt 0}">
+    <ul class="pagination justify-content-center font-weight-medium">
+        <li class="page-item" th:classappend="${payments.number eq 0} ? 'disabled'">
+            <a class="page-link svg-icon"
+               th:href="@{/admin/admSevenup?page={id}(id=${payments.number lt 2 ? 1 : payments.number})}"
+               aria-label="Previous"
+               title="Previous Page" rel="tooltip">
+                <span aria-hidden="true" data-feather="chevrons-left" width="20" height="20"></span>
+            </a>
+        </li>
+        <li class="page-item" th:classappend="${i eq payments.number + 1} ? 'active'"
+            th:each="i : ${#numbers.sequence( payments.number + 1, payments.totalPages > 10 + payments.number ? payments.number + 10 : payments.totalPages, 1)}">
+            <a class="page-link" th:href="@{/admin/admSevenup?page={id}(id=${i})}" th:text="${i}"
+               th:title="${'Page '+ i}"
+               rel="tooltip"></a>
+        </li>
+        <li class="page-item disabled" th:if="${payments.number + 10 < payments.totalPages}">
+            <a class="page-link svg-icon" href="#">
+                <span data-feather="more-horizontal" width="20" height="20"></span>
+            </a>
+        </li>
+        <li class="page-item" th:classappend="${payments.number + 1 eq payments.totalPages} ? 'disabled'">
+            <a class="page-link svg-icon" th:href="@{/admin/admSevenup?page={id}(id=${payments.number + 2})}"
+               aria-label="Next"
+               title="Next Page" rel="tooltip">
+                <span aria-hidden="true" data-feather="chevrons-right" width="20" height="20"></span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<p th:text="${'Total Payments: ' + totalPayments}"></p>
+<p th:text="${'Pending Payments: ' + pendingPayments}"></p>
+</div>
+</body>
+</html>

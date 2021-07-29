@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>NEFT | Home</title>
+<!-- plugins:css -->
+<link rel="stylesheet"
+	href="../../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css" />
+<link rel="stylesheet"
+	href="../../vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css" />
+<link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css" />
+<link rel="stylesheet" type="text/css" href="../../font.css" />
+<!-- endinject -->
+<!-- plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<link rel="stylesheet" href="../../css/style.css" />
+<!-- endinject -->
+<link rel="shortcut icon"
+	href="../../assets/img/faviconbranding.ico" />
+<style type="text/css">
+@font-face {
+	font-family: FedraSansStdLight;
+	src: url(font/FedraSansStd-LightLF.otf);
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p {
+	font-family: inherit;
+	font-weight: 400;
+	line-height: 1.71429;
+}
+
+body {
+	background: #fff;
+	color: #6a6d71;
+	font-family: 'FedraSansStdLight';
+	font-weight: normal;
+	color: #000000;
+	height: 100%;
+}
+</style>
+</head>
+
+<body>
+	<div class="container-scroller">
+		<!-- partial:partials/_horizontal-navbar.html -->
+		<nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
+	      <div class="nav-top flex-grow-1" style="height: 100px; background-color: #000000; height: 110px;">
+        <div class="container d-flex flex-row h-100">
+          <div class="row">
+            <div class="col-lg-10 mx-auto" style="margin-top: 35px;"><h1 style="color: #fff;">CORONATION MERCHANT BANK NEFT INFLOW </h1>
+            </div>
+            <div class="col-lg-2 mx-auto">
+               <a class="navbar-brand brand-logo" href="index.html"><img src="https://mware.coronationmb.com/bidding/img/img-branding/cmb-logo-white.png" alt="logo"/></a>
+            </div>
+          </div>
+        </div>
+      </div>
+			<div class="nav-bottom" style="background-color: #eaeaea;">
+				<div class="container">
+					<ul class="nav" style="color: #000; font-weight: bold;">
+						<li class="nav-item" ><a href="/payment-portal/neft/in/home" class="nav-link" style="color: #000;">NEFT Dashboard</a>
+						</li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+						<li class="nav-item"><a href="/payment-portal/homeDashboard"
+							class="nav-link" style="color: #000;">Switch Platform </a></li>
+
+							<li class="nav-item"><a href="/payment-portal/logout"
+							class="nav-link" style="color: #000;">Logout <i class="icon-power"></i></a></li>
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+				<br/>
+					<div class="row">
+						<!-- <div class="col-md-6 col-lg-3 grid-margin stretch-card">
+              <div class="card bg-dark text-white border-0">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <i class="icon-handbag icon-lg"></i>
+                    <div class="ml-4">
+                      <h4 class="font-weight-light">OLAM NIGERIA LIMITED</h4>
+                      <p class="mb-0 font-weight-light">RC N0: RC140655</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+						<input type="hidden" id="responseMessage"
+							th:value="${initiatorDetail.responseMessage}" />
+
+						<div class="col-md-6 col-lg-4 grid-margin stretch-card">
+							<div class="card bg-primary text-white border-0">
+				                <div class="card-body">
+				                  <div class="d-flex flex-row align-items-top">
+				                    <i class="icon-user"></i>
+				                    <div class="ml-3">
+				                      <h6 class="mt-2 text-muted card-text"><span
+				                  th:text="|Hello ${session.username}|"></span></h6>
+				                      <p class="mt-2 text-muted card-text"><span
+				                  th:text="| ${session.userrole}|"></span></p>
+				                    </div>
+				                  </div>
+            					</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-9 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<!-- <h4 class="card-title">Bulk Transfer</h4>
+									<a href="/payment-portal/neft/dr/bulkUpload"
+										class="btn btn-primary btn-fw" style="margin-bottom: 10px;">New
+										Transfer</a> -->
+									<div class="row">
+										<br />
+										<div class="col-12 table-responsive ">
+											<table id="order-listing" class="table table-striped">
+												<thead>
+													<tr>
+														<th>Ref Code</th>
+														<th>Status</th>
+														<th>Request Date</th>
+														<th>Instrument Type</th>
+														<th>Narration</th>
+														<th>Details</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr
+														th:each="detail,iterationStatus  : ${initiatorDetail.inflowDetails}">
+														<td th:text="${detail.msgId}"></td>
+														<td th:text="${detail.transactionStatus.description}"></td>
+														<td th:text="${detail.transactionTime}"></td>
+														<td th:text="${detail.instrumentType}"></td>
+														<td th:text="${detail.narration}"></td>
+														<td><a th:href="@{/neft/in/viewDetail(id=${detail.id})}" class="btn btn-outline-primary">View</a>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 d-flex align-items-stretch">
+							<div class="row">
+								<div class="col-12 grid-margin stretch-card">
+									<div class="card">
+										<div class="card-body">
+											<div class="d-flex align-items-center">
+												<div class="icon-in-bg bg-success text-white rounded-circle">
+													<i class="icon-tag font-weight-bold"></i>
+												</div>
+												<div class="ml-4">
+													<h4>
+														Total<br>Transactions </br>
+													</h4>
+													<h3 class="mb-0 font-weight-medium" th:remove="tag"
+														th:text="${initiatorDetail.totalTransactionsCount}">50</h3>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 grid-margin stretch-card">
+									<div class="card">
+										<div
+											class="card-body d-flex flex-column justify-content-between">
+											<div class="d-flex align-items-center">
+												<div class="icon-in-bg bg-success text-white rounded-circle">
+													<i class="icon-tag font-weight-bold"></i>
+												</div>
+												<div class="ml-4">
+													<h4>
+														Pending<br>Transactions </br>
+													</h4>
+													<h3 class="mb-0 font-weight-medium" th:remove="tag"
+														th:text="${initiatorDetail.totalPendingTransactionsCount}">50</h3>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+					<div class="w-100 clearfix">
+						<center>
+							<span class=" d-block text-center text-sm-left d-sm-inline-block">Copyright
+								© <script>document.write(""+new Date().getFullYear());</script> Coronation Merchant Bank. All rights reserved.</span>
+						</center>
+
+					</div>
+				</footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+
+	<!-- plugins:js -->
+	<script src="../../vendors/js/vendor.bundle.base.js"></script>
+	<script src="../../vendors/js/vendor.bundle.addons.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page-->
+	<!-- End plugin js for this page-->
+	<!-- inject:js -->
+	<script src="../../js/template.js"></script>
+	<!-- endinject -->
+	<!-- Custom js for this page-->
+	<script src="../../js/dashboard.js"></script>
+	<script src="../../js/todolist.js"></script>
+	<script src="../../js/data-table.js"></script>
+	<!-- End custom js for this page-->
+	<script type="text/javascript">
+		var responseMessage = $("#responseMessage").val();
+		console.log('responseMessage==',responseMessage);
+		if(responseMessage !== ''){
+			alert(responseMessage);
+		}
+	</script>
+</body>
+
+
+</html>

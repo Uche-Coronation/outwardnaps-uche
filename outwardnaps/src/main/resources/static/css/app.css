@@ -1,0 +1,266 @@
+@CHARSET "ISO-8859-1";
+
+.outer {
+	width: 1000px;
+	color: #000000;
+	background-color: lightgrey;
+	border: 2px solid white;
+	padding: 5px;
+}
+
+.outerbid {
+	width: 1200px;
+	color: #000000;
+	background-color: white;
+	border: 2px solid lightgrey;
+	padding: 10px;
+	border-radius: 25px;
+}
+
+.outer1 {
+	/*width: 1250px;
+	height: 80%;*/
+	width: 92%;
+	height: 90%;
+	color: #000000;
+	background-color: white;
+	border: 2px solid lightgrey;
+	/*padding: 20px;*/
+	padding: 10px;
+	border-radius: 25px;
+	/*display: flex;
+	align-items: center;
+	justify-content: center;*/
+}
+
+.outer3 {
+	width: 1100px;
+	color: #000000;
+	background-color: lightgrey;
+	border: 2px solid white;
+	padding: 5px;
+}
+
+.outer4 {
+	color: #000000;
+	background-color: lightgrey;
+	border: 2px solid white;
+	padding: 5px;
+}
+
+.outer2 {
+	width: 1100px;
+}
+
+img.resize {
+	width: 200px;
+	height: 200px;
+}
+
+.header h1 {
+	position: relative;
+	top: 18px;
+	left: 10px;
+}
+
+#element1 {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+#element2 {
+	display: inline-block;
+	float: right;
+}
+
+#occupation1 {
+	float: left;
+	color: grey !important;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited,
+	.btn-primary:focus {
+	float: right;
+	background-color: #000000;
+	color: white;
+}
+
+#generateOTP {
+	float: center;
+	background-color: #000000;
+	color: white;
+}
+
+#relationship1 {
+	color: grey !important;
+}
+
+#itemId1 {
+	color: grey !important;
+}
+
+#bank1 {
+	color: grey !important;
+}
+
+#tier {
+	color: grey !important;
+}
+
+#currency {
+	color: grey !important;
+}
+
+#referralOptionId {
+	color: grey !important;
+}
+
+#role {
+	color: grey !important;
+}
+
+.phoneinput {
+	display: inline-block;
+	height: 30px;
+	color: grey;
+	background-color: white;
+}
+
+.phoneinput input {
+	border: 0;
+	height: 30px;
+	width: 420px;
+}
+
+#flex {
+	/*width: 1400px;
+	height: 1400px;*/
+	width: 100%;
+	height: 100%;
+	color: #000000;
+	background-color: #000000;
+	border: 2px solid white;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#flex2 {
+	/*width: 1400px;
+	height: 700px;*/
+	width: 100%;
+	height: 100%;
+	color: #000000;
+	background-color: white;
+	border: 2px solid white;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#flex3 {
+	/*width: 1400px;
+	height: 500px;*/
+	width: 100%;
+	height: 100%;
+	color: #000000;
+	background-color: #000000;
+	border: 2px solid white;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mycheckbox {
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.mycheckboxdiv {
+	text-align: left;
+}
+
+/*#tierForm {
+	display: block;
+}
+
+#tierForm select, #tierForm label {
+	display: block;
+	vertical-align: top;
+	line-height: 20px;
+}
+*/
+
+#bankForm {
+	display: block;
+}
+
+#bankForm select, #bankForm label {
+	display: block;
+	vertical-align: top;
+	line-height: 20px;
+	border-radius: 5px;
+}
+
+#currencyForm {
+	display: block;
+}
+
+#currencyForm select, #currencyForm label {
+	display: block;
+	vertical-align: top;
+	line-height: 20px;
+	border-radius: 5px;
+}
+#methodDiv {
+	display: block;
+}
+
+#methodDiv select, #methodDiv label {
+	display: block;
+	vertical-align: top;
+	line-height: 20px;
+}
+
+#channelDiv {
+	display: block;
+}
+
+#channelDiv select, #channelDiv label {
+	display: block;
+	vertical-align: top;
+	line-height: 20px;
+}
+
+/*input[id="amount"]::-webkit-input-placeholder {
+ font-size: 7px;
+ color: #d0cdfa;
+ text-transform: uppercase;
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}*/
+/*input[id="amount"]:-moz-placeholder{ /* older Firefox*/
+ font-size: 7px;
+ color: #d0cdfa;
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}*/
+/*input[id="amount"]::-moz-placeholder{ /* Firefox 19+ */ 
+ font-size: 7px;
+ color: #d0cdfa; 
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}*/ 
+/*input[id="amount"]:-ms-input-placeholder { 
+ font-size: 7px; 
+ color: #d0cdfa;
+ text-transform: uppercase;
+ text-align: center;
+ font-weight: bold;
+}*/

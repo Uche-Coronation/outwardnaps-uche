@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sevenup Payment</title>
+</head>
+<body>
+<script src="jquery/jquery.min.js"></script>
+<script>
+
+/* $( document ).ready(function() {
+	$.ajax({
+        type: 'GET',
+        dataType:'JSON',
+        contentType: 'application/json',
+        url: window.location.origin +'/payment-portal/loadPropertiesData',
+        beforeSend: function () { 
+            $('.loading-overlay').show();
+        },
+        success: function (data) {             	
+            $('#bankCode').val(data.bankCode);
+            $('#bankAccountCode').val(data.bankAccountCode);
+            $('#providerCode').val(data.providerCode);
+            $('#validateUrl').val(data.validateUrl);
+            $('.loading-overlay').fadeOut("slow");            	
+        }
+    });
+}); */
+
+function validateOrder(){ 
+	 if($('#customerCode').val().length < 1){
+		 $('#msg').html("Enter valid Customer Code");
+		return;
+	}else if($('#invoiceNumber').val().length < 1){
+		 $('#msg').html("Enter valid Invoice Number");
+		return;
+	}else if($('#amount').val().length < 1){
+		 $('#msg').html("Enter valid amount");
+		return;
+	}else if($('#securityCode').val().length < 1){
+		 $('#msg').html("Enter valid Security code");
+			return;
+	}else{
+		 $.ajax({
+		        type: 'POST',
+		        dataType: 'json',
+		        contentType: 'application/json',
+		        url: $('#validateUrl').val(),
+		        data: JSON.stringify( { "CustomerCode": $('#customerCode').val(), "InvoiceNumber": $('#invoiceNumber').val(), "SecurityCode": $('#securityCode').val(), "SecurityCode": $('#securityCode').val(), "Amount": $('#amount').val(),"BankCode": $('#bankCode').val(),"BankAccountCode": $('#bankAccountCode').val(), "ProviderCode": $('#providerCode').val() } ),
+		        beforeSend: function () { 
+		            $('.loading-overlay').show();
+		            $('#msg').html("Before send");
+		        },
+		        success:function(data){     	            
+		            $('#customerRegionCode').val(data.CustomerRegionCode);     	            
+		            $('#customerRegionName').val(data.CustomerRegionName); 
+		            $('#executionID').val(data.ExecutionId); 
+		            $('.loading-overlay').fadeOut("slow");      
+		        }
+		    });
+	}
+   
+}    
+</script>
+<div align="center">
+<h2>Sevenup Payment Form</h2>
+<div align="center">
+<form method="post" th:action="@{/initiatePayment}" th:object="${sevenupPayment}">
+<p th:id="msg"></p>
+<table>
+<tr>
+<td>Customer Code</td>
+<td><input type="text" th:field="*{customerCode}" th:id="customerCode" onblur="validateOrder()"/></td>
+</tr>
+<tr>
+<td>Invoice Number</td>
+<td><input type="text" th:field="*{invoiceNumber}" th:id="invoiceNumber" onblur="validateOrder()"/></td>
+</tr>
+<tr>
+<td>Security Code</td>
+<td><input type="text" th:field="*{securityCode}" th:id="securityCode" onblur="validateOrder()"/></td>
+</tr>
+<tr>
+<td>Amount</td>
+<td><input type="text" th:field="*{amount}" th:id="amount" onblur="validateOrder()"/></td>
+</tr>
+<tr>
+<td>Customer Name</td>
+<td><input type="text" th:field="*{customerName}"/></td>
+</tr>
+<tr>
+<td>Account Number</td>
+<td><input type="text" th:field="*{accountNumber}" th:id="accountNumber"/></td>
+</tr>
+<tr>
+<td>Payment Description</td>
+<td><input type="text" th:field="*{transactionParticulars}"/></td>
+</tr>
+</table>
+<input type="hidden" th:field="*{customerRegionCode}" th:id="customerRegionCode"/>
+<input type="hidden" th:field="*{customerRegionName}" th:id="customerRegionName"/>
+<input type="hidden" th:field="*{executionID}" th:id="executionID"/>
+<input type="submit" value="Initiate Payment"/>
+</form>
+<input type="hidden" th:name="bankCode" th:id="bankCode" th:value="${sevenupProperties.CollectionBankCode}"/>
+<input type="hidden" th:name="bankAccountCode" th:id="bankAccountCode" th:value="${sevenupProperties.CollectionBankAccountCode}"/>
+<input type="hidden" th:name="providerCode" th:id="providerCode" th:value="${sevenupProperties.ProviderCode}"/>
+<input type="hidden" th:name="validateUrl" th:id="validateUrl" th:value="${sevenupProperties.validateUrl}"/>
+</div>
+</div>
+</body>
+</html>

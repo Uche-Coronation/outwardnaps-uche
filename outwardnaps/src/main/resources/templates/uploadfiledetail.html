@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="home">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Upload NAPS Detail page</title>
+<!-- Bootstrap -->
+<link type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+	media="screen" />
+<link type="text/css" href="css/app.css" rel="stylesheet" media="screen" />
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+	<div layout:fragment="content" id="flex2">
+		<div class="outer1" style="margin-top: 1cm; margin-bottom: 1cm;">
+			<form action="#" th:action="@{/submitFileDetails}"
+				th:object="${record}" method="post">
+				<!-- <div class="form-group" style="margin-top: 0.3cm;">
+					<label class="control-label" for="orderingPartyAccountNumber">Account
+						Number</label> <input class="form-control" type="text"
+						name="orderingPartyAccountNumber" id="orderingPartyAccountNumber"
+						readonly="readonly"
+						th:value="${uploadData.orderingPartyAccountNumber}" />
+				</div>
+				<div class="form-group" style="margin-top: 0.3cm;">
+					<label class="control-label" for="orderingPartyAccountName">Account
+						Name</label> <input class="form-control" type="text"
+						name="orderingPartyAccountName" id="orderingPartyAccountName"
+						readonly="readonly"
+						th:value="${uploadData.orderingPartyAccountName}" />
+				</div>
+				<div class="form-group" style="margin-top: 0.3cm;">
+					<label class="control-label" for="uploadSessionId">Upload
+						Session Id</label> <input class="form-control" type="text"
+						name="uploadSessionId" id="uploadSessionId" readonly="readonly"
+						th:value="${uploadData.uploadSessionId}" />
+				</div> -->
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th class="text-center">Beneficiary Account Number</th>
+							<th class="text-center">Beneficiary Account Name</th>
+							<th class="text-center">Verified Beneficiary Account Name</th>
+							<th class="text-right">Amount</th>
+							<th class="text-center">Accept/Decline</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="detail,iterationStatus  : ${record.reqDataList}">
+							<td align="center" th:text="${detail.accountNumber}"></td>
+							<td align="center" th:text="${detail.recieverName}"></td>
+							<td align="center" style="color: red"
+								th:text="${detail.verifiedName}"></td>
+							<td align="right" th:text="${detail.itemAmount}"></td>
+							<td align="center"><input type="checkbox" th:name="acceptItem"
+								class="form-check-input" th:value="${detail.acceptItem}"
+								th:checked="${detail.acceptItem}" /></td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

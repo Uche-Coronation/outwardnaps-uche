@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>NEFT</title>
+<!-- plugins:css -->
+<link rel="stylesheet"
+	href="../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css" />
+<link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css" />
+<link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css" />
+<!-- endinject -->
+<!-- plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<link rel="stylesheet" href="../css/style.css" />
+<!-- endinject -->
+<link rel="shortcut icon"
+	href="../assets/img/faviconbranding.ico" />
+<style type="text/css">
+@font-face {
+	font-family: FedraSansStdLight;
+	src: url(font/FedraSansStd-LightLF.otf);
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p {
+	font-family: inherit;
+	font-weight: 400;
+	line-height: 1.71429;
+}
+
+body {
+	background: #fff;
+	color: #6a6d71;
+	font-family: 'FedraSansStdLight';
+	font-weight: normal;
+	color: #000000;
+	height: 100%;
+}
+</style>
+</head>
+
+<body>
+	<div class="container-scroller">
+		<!-- partial:partials/_horizontal-navbar.html -->
+		<nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
+	      <div class="nav-top flex-grow-1" style="height: 100px; background-color: #000000; height: 110px;">
+        <div class="container d-flex flex-row h-100">
+          <div class="row">
+            <div class="col-lg-10 mx-auto" style="margin-top: 35px;"><h1 style="color: #fff;">CORONATION MERCHANT BANK NEFT BULK PAYMENT </h1>
+            </div>
+            <div class="col-lg-2 mx-auto">
+               <a class="navbar-brand brand-logo" href="index.html"><img src="https://mware.coronationmb.com/bidding/img/img-branding/cmb-logo-white.png" alt="logo"/></a>
+            </div>
+          </div>
+        </div>
+      </div>
+			<div class="nav-bottom" style="background-color: #eaeaea;">
+				<div class="container">
+					<ul class="nav" style="color: #000; font-weight: bold;">
+						<li class="nav-item"><a href="/payment-portal/neft/authorizerHome"
+							class="nav-link" style="color: #000;">Home</a></li>
+						<!-- <li class="nav-item"><a href="index.html" class="nav-link"
+							style="color: #000;">Bank Code</a></li> -->
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+						<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+						<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+						<li class="nav-item"><a href="/payment-portal/homeDashboard"
+							class="nav-link" style="color: #000;">Switch Platform </a></li>
+						<li class="nav-item"><a href="/payment-portal/logout"
+							class="nav-link" style="color: #000;">Logout <i class="icon-power"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+				<br/>
+				<div class="row">
+					<div class="col-md-6 col-lg-4 grid-margin stretch-card">
+							<div class="card bg-primary text-white border-0">
+				                <div class="card-body">
+				                  <div class="d-flex flex-row align-items-top">
+				                    <i class="icon-user"></i>
+				                    <div class="ml-3">
+				                      <h6 class="mt-2 text-muted card-text"><span
+				                  th:text="|Hello ${session.username}|"></span></h6>
+				                      <p class="mt-2 text-muted card-text"><span
+				                  th:text="| ${session.userrole}|"></span></p>
+				                    </div>
+				                  </div>
+            					</div>
+							</div>
+						</div>
+				</div>
+					<div class="row">
+						<div class="col-md-12 grid-margin grid-margin-md-0 stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">Authorization Summary</h4>
+									<ul class="nav nav-tabs tab-solid tab-solid-danger"
+										role="tablist">
+										<li class="nav-item"><a class="nav-link active"
+											id="tab-5-1" data-toggle="tab" href="#home-5-1" role="tab"
+											aria-controls="home-5-1" aria-selected="true">Transaction
+												Details</a>
+										</li>
+										<li class="nav-item"><a class="nav-link" id="tab-5-2"
+											data-toggle="tab" href="#profile-5-2" role="tab"
+											aria-controls="profile-5-2" aria-selected="false">Authorizers</a></li>
+									</ul>
+									<div class="tab-content tab-content-solid">
+
+
+										<div class="tab-pane fade show active" id="home-5-1" role="tabpanel"
+											aria-labelledby="tab-5-1">
+											<div class="col-12 table-responsive">
+												<div class="card">
+													<div class="card-head">
+														<div style="margin-top: 10px; margin-left: 10px;">
+															<!--  <a href="" th:href="@{/generateNapsReciept(id=${batchDetail.id})}" class="btn btn-info btn-fw"> <i
+																class="icon-printer"></i>PDF
+															</a><a href="" class="btn btn-success btn-fw"> <i
+																class="icon-printer"></i>Excel
+															</a> -->
+														</div>
+													</div>
+													<div class="card-body" style="overflow-x: auto">
+														<h6 class="card-description">
+															Request Date:
+															<code th:text="${batchDetail.displayDate}">20-08-2018
+																10:12</code>
+															<!-- <br> Source Account:
+															<code th:text="${batchDetail.orderingPartyAccountNumber}">1990001870</code>
+															</br> -->
+														</h6>
+														<table id="order-listing" class="table table-striped table-responsive" style="width:auto">
+															<thead>
+																<tr>
+										                            <th>CMB Account</th>
+										                            <th>CMB Account Name</th>
+										                            <th>Account Number</th>
+										                            <th>Beneficiary Name</th>
+										                            <th>Verified Name</th>
+										                            <th>Amount(N)</th>
+									                            	<th>Payment Status</th>
+										                            <th>Narration</th>
+										                            <th>Waive Charge</th>
+										                            <th>Debit Response</th>
+										                            <th>Bank</th>
+									                            	<th>Receipt</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr
+																	th:each="detail,iterationStatus  : ${batchDetail.outwardNeftItems}">
+											                            <td th:text="${detail.payerAccountNo}"></td>
+											                            <td th:text="${detail.payerName}"></td>
+											                            <td th:text="${detail.beneficiaryAccountNo}"></td>
+											                            <td th:text="${detail.beneficiary}"></td>
+											                            <td th:text="${detail.verifiedName}" style="color: red"></td>
+											                            <td th:text="${detail.amountStr}"></td>
+									                            		<td th:text="${detail.paymentStatus}"></td>
+											                            <td th:text="${detail.narration}"></td>
+											                            <td th:text="${detail.customerWaiveCharge}"></td>
+											                            <td th:text="${detail.debitResponseDesc}"></td>
+											                            <td th:text="${detail.bankName}"></td>
+																		<td><a th:href="@{/neft/generatePaymentEvidence(id=${detail.id})}" class="btn btn-outline-primary">Receipt</a>
+																		</td>
+																</tr>
+															</tbody>
+														</table>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<div class="tab-pane fade" id="profile-5-2"
+											role="tabpanel" aria-labelledby="tab-5-2" >
+											<div class="row">
+												<div class="col-md-12">
+													<div class="card">
+														<div class="card-body">
+															<h6 class="card-description">
+																Request Date:
+																<code th:text="${batchDetail.displayDate}">20-08-2018
+																	10:12</code>
+																<!-- <br> Source Account:
+																<code
+																	th:text="${batchDetail.orderingPartyAccountNumber}">1990001870</code>
+																</br> -->
+															</h6>
+															<div class="table-responsive">
+																<table class="table table-striped">
+																	<thead>
+																		<tr>
+																			<th>Role</th>
+																			<th>Authorizer</th>
+																			<th>Status</th>
+																			<th>Comments</th>
+																			<th>Entry Date</th>
+																			<!-- <th>Attribute</th> -->
+																		</tr>
+																	</thead>
+																	<tbody>
+																		<tr th:each="detail,iterationStatus  : ${tadList}">
+																			<td th:text="${detail.roleDisplay}"></td>
+																			<td th:text="${detail.displayUser}"></td>
+																			<td th:text="${detail.displayStatus}"></td>
+																			<td th:text="${detail.comment}"></td>
+																			<td th:text="${detail.displayAuthorizeDate}"></td>
+																			<!--<td th:text="${detail.attribute}"></td> -->
+																		</tr>
+																	</tbody>
+																</table>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-12 grid-margin stretch-card"
+													style="margin-top: 10px;">
+													<div class="card">
+														<div class="card-body" style="background: #eaeaea;">
+
+															<form method="post" th:object="${tad}" id="authorizeForm" autocomplete="off">
+																 <input
+																	type="hidden" id="displayStatus123"
+																	name="displayStatus" /> <input
+																	type="hidden" id="batchId" name="batchId"
+																	th:value="${batchDetail.id}" /> <input
+																	type="hidden" id="mode" name="mode"
+																	th:value="${tad.mode}" />
+																<div class="form-group">
+																	<label for="exampleTextarea1">Enter Comment</label>
+																	<textarea class="form-control" id="comment" rows="4"
+																		name="comment" required="required"></textarea>
+																</div>
+																<div class="form-group">
+																	<label for="exampleInputUsername1">Enter Token</label>
+																	<input type="text" class="form-control" id="token"
+																		name="token" placeholder="Enter Token Here"
+																		required="required" />
+																</div>
+																<button type="submit" class="btn btn-primary mr-2"
+																	data-toggle="modal" data-target="#exampleModal-4"
+																	id="approveButton" data-whatever="@mdo">Approve</button>
+																<button type="submit" class="btn btn-info btn-fw"
+																	id="rejectButton">Decline</button>
+																<a href="/payment-portal/neft/authorizerHome"
+																	class="btn btn-light">Back</a>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- content-wrapper ends
+				<div class="row">
+					<div class="col-md-4 grid-margin grid-margin-md-0 stretch-card">
+						<div class="modal fade" id="exampleModal-4" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalLabel-4"
+							aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel-4">Bulk
+											Transfer Request Submitted Successfully</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light"
+											data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				-->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+					<div class="w-100 clearfix">
+						<center>
+							<span class=" d-block text-center text-sm-left d-sm-inline-block">Copyright
+								© <script>document.write(""+new Date().getFullYear());</script> Coronation Merchant Bank. All rights reserved.</span>
+						</center>
+
+					</div>
+				</footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+	<!-- plugins:js -->
+	<script src="../vendors/js/vendor.bundle.base.js"></script>
+	<script src="../vendors/js/vendor.bundle.addons.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page-->
+	<!-- End plugin js for this page-->
+	<!-- inject:js -->
+	<script src="../js/template.js"></script>
+	<!-- endinject -->
+	<script src="../js/data-table.js"></script>
+	<!-- Custom js for this page-->
+	<script src="../js/tabs.js"></script>
+	<!-- End custom js for this page-->
+	<script type="text/javascript">
+		var mode = $("#mode").val();
+		console.log(mode);
+		if (mode == 'VIEW') {
+			$('#approveButton').prop('disabled', true);
+			$('#rejectButton').prop('disabled', true);
+		}else{
+			$('#approveButton').prop('disabled', false);
+			$('#rejectButton').prop('disabled', false);
+		}
+		$(function() {
+			$("#approveButton").click(
+					function(e) {
+						var comment = $("textarea#comment").val();
+						var token = $("#token").val();
+						console.log('comment==', comment);
+						console.log('token==', token);
+						$("#displayStatus123").val('A');
+						if (comment == '') {
+							alert('Comment is Required');
+							$("comment").focus();
+							return false;
+						}
+						if (token == '') {
+							alert('Token is Required');
+							$("token").focus();
+							return false;
+						}
+						//alert(token);
+						//alert(comment);
+						//alert($("#displayStatus").val());
+						e.preventDefault();
+						$('#authorizeForm').attr('action',
+								"/payment-portal/neft/authorizeBulkRequest").submit();
+						$('#approveButton').prop('disabled', true);
+					});
+		});
+		$(function() {
+			$("#rejectButton").click(
+					function(e) {
+						var comment = $("textarea#comment").val();
+						var token = $("#token").val();
+						console.log('comment==', comment);
+						console.log('token==', token);
+						$("#displayStatus").val('R');
+						if (comment == "") {
+							alert('Comment is Required');
+							$("comment").focus();
+							return false;
+						}
+						if (token == "") {
+							alert('Token is Required');
+							$("token").focus();
+							return false;
+						}
+						e.preventDefault();
+						$('#authorizeForm').attr('action',
+								"/payment-portal/neft/rejectBulkRequest").submit();
+						$('#rejectButton').prop('disabled', true);
+					});
+		});
+	</script>
+</body>
+
+</html>

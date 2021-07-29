@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coronation Portal</title>
+<link type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+	media="screen" />
+<link rel="stylesheet" href="css/user.css" />
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+	<div class="login-card">
+		<img src="img/avatar_2x.png" class="profile-img-card" />
+		<p class="profile-name-card"></p>
+		<form class="form-signin" action="#" th:action="@{/login}"
+			th:object="${user}" method="post" id="paymentfw-form">
+			<span class="reauth-email"> </span> <input class="form-control"
+				type="email" required="required" placeholder="Email address"
+				autofocus="autofocus" id="inputEmail" name="userName" /> <input
+				class="form-control" type="password" required="required"
+				placeholder="Password" id="inputPassword" name="password" />
+			<div class="checkbox">
+				<div class="checkbox">
+					<label> <input type="checkbox" />Remember me
+					</label>
+				</div>
+			</div>
+			<button class="btn btn-primary btn-block btn-lg btn-signin"
+				type="submit">Sign in</button>
+		</form>
+		<a href="#" class="forgot-password">Forgot your password?</a>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</body>
+
+</html>

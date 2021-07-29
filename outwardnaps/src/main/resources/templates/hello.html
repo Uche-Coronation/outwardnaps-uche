@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="home">
+<head>
+<!--  title>Hello world page</title-->
+
+<!-- Bootstrap -->
+<link type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+	media="screen"/>
+<link rel="icon" type="image/x-icon" href="img/Capture2.jpg" />
+</head>
+<body>
+	<div layout:fragment="content">
+		<p>
+			<font size="4"><td th:text="${response}"></td></font>
+		</p>
+	</div>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>

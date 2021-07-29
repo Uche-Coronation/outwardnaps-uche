@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="home">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Authorize NAPS request</title>
+<!-- Bootstrap -->
+<link type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+	media="screen">
+</link>
+<style type="text/css">
+@font-face {
+	font-family: FedraSansStdLight;
+	src: url(font/FedraSansStd-LightLF.otf);
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p {
+	font-family: inherit;
+	font-weight: 400;
+	line-height: 1.71429;
+}
+
+body {
+	background: #fff;
+	color: #6a6d71;
+	font-family: 'FedraSansStdLight';
+	font-weight: normal;
+	color: #000000;
+	height: 100%;
+}
+</style>
+</head>
+<body>
+	<div layout:fragment="content">
+
+
+		<form action="#" th:action="@{/authorizeUploadFile}"
+			th:object="${uploadRequestData}" method="post">
+
+			<div class="form-group">
+				<label>Upload Session ID:</label> <select name="productType"
+					th:field="*{uploadSessionId}" id="uploadSessionId">
+					<option th:each="batchId : ${batchIds}" th:value="${batchId}"
+						th:text="${batchId}" />
+				</select>
+			</div>
+
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+
+	</div>
+
+	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+</body>
+</html>

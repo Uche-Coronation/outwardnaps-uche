@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Welcome to Coronation MB's Payment Solution</title>
+  <!--<link href="assets/img/faviconbranding.ico" rel="shortcut icon">--> 
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- STYLES -->     
+ <link rel="stylesheet" type="text/css" href="vendors/assets/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="vendors/assets/css/style.css">
+ <link rel="stylesheet" type="text/css" href="vendors/assets/css/adededstyle.css"> 
+<!--<link rel="shortcut icon"
+	href="assets/img/faviconbranding.ico" />-->
+<link rel="shortcut icon" href="https://www.coronationmb.com/favicon.ico" /> 
+
+</head>
+<body class="air__menu--gray">
+  <div class="air__initialLoading"></div>
+<div class="logwrap">
+  <div class="air__auth">
+  <div class="d-flex align-items-end mt-auto logologin">
+    <img src="vendors/assets/img/logo-black.png" alt="Coronation Merchant Bank Digital Signature">   
+  </div>
+  <div class="air__auth__container pl-5 pr-5 pt-5 pb-5 bg-white text-center">
+    <div class="text-dark font-size-20">
+        <h5 class="card-title">Welcome to Coronation <i>Payment Portal</i></h5>
+      <!-- <h6><strong>Sign in to continue</strong></h6> -->
+      <p>Kindly sign in with your Coronation Merchant Bank credential to continue</p>
+    </div>
+    <form class="" th:action="@{/}"
+				th:object="${user}" method="post" id="form">
+				
+								<div th:if="${user} != null">
+								<input type="hidden" name="status" id="statusCode"
+									th:value="${user.statusId}" />
+								</div>
+      <div id="error" class="isa_error" th:if="${errorMessage != null}">      
+        <!-- error will be shown here ! -->
+        Login failed, please enter the right username/password to continue.
+        </div> 
+      <div class="form-group">
+        <input type="email" name="userName" id="email" class="form-control" placeholder="Email Address" />
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" id="password" data-toggle="password" class="form-control" placeholder="Password" />
+      </div>
+      <a class="text-center btn btn-primary" type="submit" name="btn-login" id="btn-login" onclick="this.closest('form').submit();return false;">
+        <span class="loading-overlay" style="display:none"><img src="vendors/assets/img/btn-ajax-loader.gif" height="18" width="18" /></span> &nbsp; 
+ Sign in
+      </a>      
+    </form>
+  </div>
+</div>
+<div class="cmbfooter">
+    <div><span>Need help using this platform? </span><br>
+Kindly contact the IT Team by sending an email to <a href="mailto:itsupport@coronationmb.com">itsupport@coronationmb.com</a>
+</div>
+</div>
+</div>
+<!--Modal Form Login with Avatar Demo-->
+	<div id="myModal" class="modal fade modal-backdrop show" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog cascading-modal modal-avatar modal-sm"
+			role="document" style="margin-top: 200px;">
+			<!--Content-->
+			<div class="modal-content"
+				style="border-radius: 8px; background-color: #FF002B;">
+
+				<a href="" class="close-modal"><span id="close">&times;</span></a>
+				<!--Body-->
+				<div class="modal-body text-center mb-1">
+
+					<form th:action="@{/loginDetail}" method="post" th:object="${user}"
+						autocomplete="off">
+						<div th:if="${user} != null">
+						<input name="_" type="hidden" value="" /> <input type="hidden"
+							name="userName" id="userId" th:value="${user.userName}" /><input
+							type="hidden" name="password" id="password"
+							th:value="${user.password}" />
+
+						<h5 class="mt-1 mb-2">Enter your Token</h5>
+
+						<div th:if="${user.tokenRespMessage} != null">
+							<p style="text-align: center;" th:text="${user.tokenRespMessage}">
+								<font size="4"></font>
+							</p>
+						</div>
+						</div>
+						<div class="md-form ml-0 mr-0">
+							<input type="text" name="token" id="token" required="required"
+								class="form-control ml-0" /> <label for="token" class="ml-0">Enter
+								Token</label>
+						</div>
+
+						<div class="text-center mt-4">
+							<button type="submit" value="submit"
+								class="btn  submit-btn btn-block"
+								style="background-color: #000000; color: #ffffff;">Login</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+			<!--/.Content-->
+		</div>
+	</div>
+	<!-- plugins:js -->
+	<script src="vendors/js/vendor.bundle.base.js"></script>
+	<script src="vendors/js/vendor.bundle.addons.js"></script>
+	<!-- endinject -->
+	<!-- inject:js -->
+	<script src="js/template.js"></script>
+	<!-- endinject -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			var span = document.getElementById("close");
+			var statusCode = $('#statusCode').val();
+			console.log("statusCode==", statusCode);
+			//var modal = document.getElementById('modalLoginAvatarDemo');
+			var modal = document.getElementById('myModal');
+			if (statusCode == 'A') {
+				console.log("inside statusCode==", statusCode);
+				modal.style.display = "block";
+			}
+
+			$('#form3').change(function(event) {
+				var userId = $('#form3').val();
+				console.log("userId==", userId);
+				$('#userId').val(userId);
+
+			});
+
+			$('#form4').change(function(event) {
+				var pwd = $('#form4').val();
+				console.log("pwd==", pwd);
+				$('#password').val(pwd);
+
+			});
+
+			span.onclick = function(event) {
+				// if (event.target == modal) {
+				modal.style.display = "none";
+				// }
+			}
+
+		});
+	</script>
+</body>
+</html>

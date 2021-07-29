@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>NEFT | Transfer Code</title>
+<!-- plugins:css -->
+<link rel="stylesheet"
+	href="../vendors/iconfonts/simple-line-icon/css/simple-line-icons.css" />
+<link rel="stylesheet" href="../vendors/css/vendor.bundle.base.css" />
+<link rel="stylesheet" href="../vendors/css/vendor.bundle.addons.css" />
+<!-- endinject -->
+<!-- plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<link rel="stylesheet" href="../css/style.css" />
+<!-- endinject -->
+<link rel="shortcut icon" href="../assets/img/faviconbranding.ico" />
+<style type="text/css">
+@font-face {
+	font-family: FedraSansStdLight;
+	src: url(font/FedraSansStd-LightLF.otf);
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p {
+	font-family: inherit;
+	font-weight: 400;
+	line-height: 1.71429;
+}
+
+body {
+	background: #fff;
+	color: #6a6d71;
+	font-family: 'FedraSansStdLight';
+	font-weight: normal;
+	color: #000000;
+	height: 100%;
+}
+</style>
+</head>
+
+<body>
+	<div class="container-scroller">
+		<!-- partial:partials/_horizontal-navbar.html -->
+		<nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
+	      <div class="nav-top flex-grow-1" style="height: 100px; background-color: #000000; height: 110px;">
+        <div class="container d-flex flex-row h-100">
+          <div class="row">
+            <div class="col-lg-10 mx-auto" style="margin-top: 35px;"><h1 style="color: #fff;">CORONATION MERCHANT BANK NEFT BULK PAYMENT </h1>
+            </div>
+            <div class="col-lg-2 mx-auto">
+               <a class="navbar-brand brand-logo" href="index.html"><img src="https://mware.coronationmb.com/bidding/img/img-branding/cmb-logo-white.png" alt="logo"/></a>
+            </div>
+          </div>
+        </div>
+      </div>
+			<div class="nav-bottom" style="background-color: #eaeaea;">
+				<div class="container">
+					<ul class="nav" style="color: #000; font-weight: bold;">
+						<li class="nav-item"><a href="/payment-portal/neft/home" class="nav-link"
+							style="color: #000;">Home</a></li>
+						<li class="nav-item"><a href="/payment-portal/neft/bulkUpload"
+							class="nav-link" style="color: #000;">Bulk Upload</a></li>
+						<li class="nav-item"><a href="/payment-portal/neft/bankCode"
+							class="nav-link" style="color: #000;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+						<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #eaeaea;">Bank Code</a></li>
+						<li class="nav-item"><a href="/payment-portal/homeDashboard"
+							class="nav-link" style="color: #000;">Switch Platform </a></li>
+							<li class="nav-item"><a href="/payment-portal/logout"
+							class="nav-link" style="color: #000;">Logout <i class="icon-power"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- partial -->
+		<div class="container-fluid page-body-wrapper">
+			<div class="main-panel">
+				<div class="content-wrapper">
+				<br/>
+				<div class="row">
+					<div class="col-md-6 col-lg-4 grid-margin stretch-card">
+							<div class="card bg-primary text-white border-0">
+				                <div class="card-body">
+				                  <div class="d-flex flex-row align-items-top">
+				                    <i class="icon-user"></i>
+				                    <div class="ml-3">
+				                      <h6 class="mt-2 text-muted card-text"><span
+				                  th:text="|Hello ${session.username}|"></span></h6>
+				                      <p class="mt-2 text-muted card-text"><span
+				                  th:text="| ${session.userrole}|"></span></p>
+				                    </div>
+				                  </div>
+            					</div>
+							</div>
+						</div>
+				</div>
+					<div class="row">
+						<div class="col-md-3 align-items-stretch">
+							<div class="row">
+								<div class="col-md-12 grid-margin stretch-card">
+									<div class="card">
+										<div class="card-body">
+											<div class="d-flex align-items-center">
+												<div class="ml-4">
+													<h4 class="card-title">Bank Codes For Bulk Transfer</h4>
+													<p class="text-muted font-weight-light">The Bank codes
+														below have been provided to help you with bulk transfer
+														transaction.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-9 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">Bank Name and Codes</h4>
+									<div class="table-responsive">
+										<table id="order-listing" class="table">
+											<thead>
+												<tr>
+													<th>Bank Name</th>
+													<th>Bank Code</th>
+													<th>Branch Name</th>
+													<th>Branch Address</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="detail,iterationStatus  : ${bankList}">
+													<td th:text="${detail.bankName}"></td>
+													<td th:text="${detail.sortCode}"></td>
+													<td th:text="${detail.branchName}"></td>
+													<td th:text="${detail.branchAddress}"></td>
+												</tr>
+
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- content-wrapper ends -->
+				<!-- partial:partials/_footer.html -->
+				<footer class="footer">
+					<div class="w-100 clearfix">
+						<center>
+							<span class=" d-block text-center text-sm-left d-sm-inline-block">Copyright
+								© <script>document.write(""+new Date().getFullYear());</script> Coronation Merchant Bank. All rights reserved.</span>
+						</center>
+
+					</div>
+				</footer>
+				<!-- partial -->
+			</div>
+			<!-- main-panel ends -->
+		</div>
+		<!-- page-body-wrapper ends -->
+	</div>
+	<!-- container-scroller -->
+	<!-- plugins:js -->
+	<script src="../vendors/js/vendor.bundle.base.js"></script>
+	<script src="../vendors/js/vendor.bundle.addons.js"></script>
+	<script src="../js/data-table.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page-->
+	<!-- End plugin js for this page-->
+	<!-- inject:js -->
+	<script src="../js/template.js"></script>
+	<!-- endinject -->
+	<!-- Custom js for this page-->
+	<!-- End custom js for this page-->
+</body>
+
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- <html lang="en" xmlns:th="http://www.thymeleaf.org">
+ -->
+ <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8" lang="en" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>REMITA | Authorizer detail Page</title>
+<!-- plugins:css -->
+<link rel="stylesheet"
+	href="vendors/iconfonts/simple-line-icon/css/simple-line-icons.css" />
+<link rel="stylesheet"
+	href="vendors/iconfonts/font-awesome/css/font-awesome.min.css" />
+<link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+<link rel="stylesheet" href="vendors/css/vendor.bundle.addons.css" />
+
+<link rel="stylesheet" type="text/css" href="font.css" />
+<!-- endinject -->
+<!-- plugin css for this page -->
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<!-- endinject -->
+<link rel="shortcut icon"
+	href="assets/img/faviconbranding.ico" />
+
+<style>
+@font-face {
+	font-family: FedraSansStdLight;
+	src: url(font/FedraSansStd-LightLF.otf);
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p {
+	font-family: inherit;
+	font-weight: 400;
+	line-height: 1.71429;
+}
+
+body {
+	background: #fff;
+	color: #6a6d71;
+	font-family: 'FedraSansStdLight';
+	font-weight: normal;
+	color: #000000;
+	height: 100%;
+}
+</style>
+</head>
+
+<body>
+	<div class="container-scroller">
+		<!-- partial:partials/_horizontal-navbar.html -->
+		<nav class="navbar horizontal-layout col-lg-12 col-12 p-0">
+	           <div class="nav-top flex-grow-1" style="height: 100px; background-color: #000000; height: 110px;">
+        <div class="container d-flex flex-row h-100">
+          <div class="row">
+            <div class="col-lg-10 mx-auto" style="margin-top: 35px;"><h1 style="color: #fff;"> REMITA<span style="color: #000000;">CORONATION MERCHANTMERCHANT BANK</span></h1>
+            </div>
+            <div class="col-lg-2 mx-auto">
+               <a class="navbar-brand brand-logo" href="index.html"><img src="https://mware.coronationmb.com/bidding/img/img-branding/cmb-logo-white.png" alt="logo"/></a>
+            </div>
+          </div>
+        </div>
+      </div>
+			<div class="nav-bottom" >
+				<div class="container">
+					<ul class="nav page-navigation" style="color: #000; font-weight: bold;">
+							<li class="nav-item"><a href="/payment-portal/remitaAuth" class="nav-link" >Dashboard</a></li>
+						    <!--   <li class="nav-item">
+				              <a href="#" class="nav-link"><span class="menu-title">Initiate Payment</span><i class="menu-arrow"></i></a>
+				              <div class="submenu">
+				                <ul class="submenu-item">
+				                  <li class="nav-item"><a class="nav-link" href="/payment-portal/homeRemitaNORRR">Payment with RRR</a></li>
+				                  <li class="nav-item"><a class="nav-link" href="/payment-portal/homeRemitaRRR">Payment without RRR</a></li>
+				                </ul>
+				              </div>
+				            </li>
+							<li class="nav-item"><a href="/payment-portal/bankCode"
+							class="nav-link" style="color: #FFF;">Bank Code</a></li> -->
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #FFF;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #FFF;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #FFF;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #FFF;">Bank Code</a></li>
+							<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #FFF;">Bank Code</a></li>
+						<li class="nav-item"><a href="#"
+							class="nav-link" style="color: #FFF;">Bank Code</a></li>
+
+							<li class="nav-item"><a href="/payment-portal/logout"
+							class="nav-link" style="color: #000;">Logout <i class="icon-power"></i></a></li>
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+		<!-- partial -->
+			<div class="container-fluid page-body-wrapper"><br/>
+			  <div class="main-panel">
+			        <div class="content-wrapper">
+			        <input type="hidden" name="username" id="username" th:value="${session.username}" />
+<!-- 			        			        <div class="row">
+	<div class="col-md-6 col-lg-4 grid-margin stretch-card">
+		<div class="card bg-primary text-white border-0">
+               <div class="card-body">
+                 <div class="d-flex flex-row align-items-top">
+                   <i class="icon-user"></i>
+                   <div class="ml-3">
+                     <h6 class="mt-2 text-muted card-text"><span
+                 th:text="|Hello ${session.username}|"></span></h6>
+                     <p class="mt-2 text-muted card-text"><span
+                 th:text="| ${session.userrole}|"></span></p>
+                   </div>
+                 </div>
+         	</div>
+		</div>
+	</div>
+</div> -->
+			          <div class="row">
+			        <div class="col-md-3 grid-margin stretch-card">
+			        </div>
+			        <div class="col-md-6 grid-margin stretch-card">
+			          <div class="card">
+			           <input type="hidden" name="debittedAcct" id="debittedAcct" th:value="${initrrr.debittedAccount}" />
+			          <div th:if="${errorMessage} != null">
+									<p style="text-align: center; color: red" th:text="${errorMessage}">
+										<font size="4"></font>
+									</p>
+								</div>
+
+			            <div class="card-body">
+			              <h4 class="card-title" style="font-weight: bolder;">Initiator Detail Page</h4>
+			              <hr/>
+			             <!-- <div class="row">
+			                  <div class="col-12 table-responsive">
+			                 	<table id="order-listing" class="table table-striped">
+												<thead>
+													<tr>
+														<th>SN</th>
+														<th>RRR</th>
+														<th>Merchant</th>
+														<th>Service Type</th>
+														<th>Amount</th>
+														<th>Date</th>
+														<th>Approval Status</th>
+														<th>Payment Status</th>
+														<th>Details</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="remitaInitiatorDetail,iterationStatus  : ${remitaInitiatorDetaillist}">
+														<td th:text="${iterationStatus.count}"></td>
+														<td th:text="${remitaInitiatorDetail.rrr}"></td>
+														<td th:text="${remitaInitiatorDetail.merchantId}"></td>
+														<td th:text="${remitaInitiatorDetail.serviceType}"></td>
+														<td th:text="${remitaInitiatorDetail.amount}"></td>
+														<td th:text="${remitaInitiatorDetail.requestTime}"></td>
+														<td th:text="${remitaInitiatorDetail.responseCode}"></td>
+														<td th:text="${remitaInitiatorDetail.responseMsg}"></td>
+														<td><a class="btn btn-outline-primary" href="/payment-portal/authDetailRRR?id=164">View</a>
+														</td>
+
+													</tr>
+												</tbody>
+											</table>
+
+			                </div>
+			              </div> -->
+
+
+			             <!--  <form class="forms-sample" th:action="@{/remitaPayNotify}" method="post"> -->
+	                        <div class="modal-body" >
+				                  <div class="forms-sample" >
+				                    <div class="form-group row">
+				                      <label  class="col-sm-5 col-form-label" style="font-weight: bolder;">RRR:</label>
+				                      <div class="col-sm-7" id="rrd" > <span name="rrs" id="rrs" th:text="${initrrr.rrr}"></span> </div>
+				                    </div>
+				                    <div class="form-group row">
+				                      <label  class="col-sm-5 col-form-label" style="font-weight: bolder;">Payers Name:</label>
+				                      <div class="col-sm-7" id="payername" > <span th:text="${initrrr.payerName}"></span></div>
+				                    </div>
+				                    <div class="form-group row">
+				                      <label  class="col-sm-5 col-form-label" style="font-weight: bolder;">Payers Email:<span style="color: #ff0000;">*</span></label>
+				                      <div class="col-sm-7" id="payeremail" > <span th:text="${initrrr.payerEmail}"></span></div>
+				                    </div>
+				                    <div class="form-group row">
+				                      <label  class="col-sm-5 col-form-label" style="font-weight: bolder;">Payers Phone:<span style="color: #ff0000;">*</span></label>
+				                      <div class="col-sm-7" > <span th:text="${initrrr.payerPhone}"></span></div>
+				                    </div>
+				                    <div class="form-group row">
+				                      <label  class="col-sm-5 col-form-label" style="font-weight: bolder;">Amount Due:<span style="color: #ff0000;">*</span></label>
+				                      <div class="col-sm-7" > <span name="amt" id="amt" th:text="${initrrr.amount}"></span></div>
+				                    </div>
+				                     <div class="form-group row">
+				                      <label  class="col-sm-5 col-form-label" style="font-weight: bolder;">Account to debit:<span style="color: #ff0000;">*</span></label>
+				                      <div class="col-sm-7" > <span name="detacct" id="detacct" th:text="${initrrr.debittedAccount}"></span></div>
+				                    </div>
+				                    <!--  <div class="form-group row">
+				                      <label  class="col-sm-5 col-form-label" style="font-weight: bolder;">Enter your token:<span style="color: #ff0000;">*</span></label>
+				                      <div class="col-sm-7" > <input type="text" class="form-control" name="token" id="token" placeholder="Enter your token"/></div>
+				                    </div>  -->
+				                    <input type="hidden" name="rr" id="rr" th:value="${initrrr.rrr}" />
+				                     <input type="hidden" name="debittedAccount" id="debittedAccount" th:value="${initrrr.debittedAccount}" />
+ 									<input type="hidden" name="amountDebitted" id="amountDebitted" th:value="${initrrr.amount}" />
+ 									 <input type="hidden" name="userx" id="userx"  />
+				                    </div>
+				                <!--  </form>  -->
+	                        </div>
+
+	                        <!--   <button type="button" class="btn btn-success">Proceed</button>  -->
+	                        <hr/>
+	                          <button type="submit" value="submit" class="btn btn-success" style="background-color: #000000; color: #fff;"><a href="/payment-portal/homeRemita"  >Back</a></button>
+	                         <!--  <button type="button" class="btn btn-light" data-dismiss="modal">Close</button> -->
+
+	                     <!--   </form>  -->
+			            </div>
+
+			            </div>
+
+			          </div>
+			          <div class="col-md-3 grid-margin stretch-card">
+			        </div>
+
+			          </div>
+
+
+			        </div>
+			    </div>
+			</div>
+				 <div class="row">
+			          <div class="col-md-12 grid-margin stretch-card">
+			         <div class="modal fade" id="exampleModal-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-4" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5  id="exampleModalLabel-4">CORONATION MERCHANT BANK NEWSPAPER PAYMENT - 1990002623</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form class="forms-sample">
+				                    <div class="form-group row">
+				                      <label  id="RRR" class="col-sm-3 col-form-label">RRR</label>
+				                      <div class="col-sm-9">333 565 788 </div>
+				                    </div>
+				                    <div class="form-group row">
+				                      <label id="Name" class="col-sm-3 col-form-label">RRR Name</label>
+				                      <div class="col-sm-9">Mohammed Ali</div>
+				                    </div>
+				                    <div class="form-group row">
+				                      <label  id="Email" class="col-sm-3 col-form-label">Payers Email<span style="color: #ff0000;">*</span></label>
+				                      <div class="col-sm-9">mali@mali.com</div>
+				                    </div>
+				                    <div class="form-group row">
+				                      <label  id="Status" class="col-sm-3 col-form-label">Status<span style="color: #ff0000;">*</span></label>
+				                      <div class="col-sm-9">Pending Initiation</div>
+				                    </div>
+				                    <div class="form-group row">
+				                      <label  id="Text" class="col-sm-3 col-form-label">Text<span style="color: #ff0000;">*</span></label>
+				                      <div class="col-sm-9"></div>
+				                    </div>
+
+				                  </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary mr-2">Approve</button>
+                          <button type="button" class="btn btn-success" data-dismiss="modal">Reject</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+			            </div>
+			         </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="w-100 clearfix">
+          	<center>
+          		<span class=" d-block text-center text-sm-left d-sm-inline-block">Copyright © Coronation Merchant Bank. All rights reserved.</span>
+          	</center>
+
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+
+	<!-- container-scroller -->
+
+	<!-- plugins:js -->
+	<script src="vendors/js/vendor.bundle.base.js"></script>
+	<script src="vendors/js/vendor.bundle.addons.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page-->
+	<!-- End plugin js for this page-->
+	<!-- inject:js -->
+	<script src="js/template.js"></script>
+	<!-- endinject -->
+	<!-- Custom js for this page-->
+	<script src="js/dashboard.js"></script>
+	<script src="js/todolist.js"></script>
+	<script src="js/data-table.js"></script>
+	<script src="js/modal-demo.js"></script>
+	<!-- End custom js for this page-->
+
+		<script type="text/javascript">
+		$(document).ready(function() {
+			var span = document.getElementById("close");
+			var rrno = $('#rrs').text();
+			var amtdue = $('#amt').text();
+			var usrname = $('#username').val();
+			var debacc = $('#debittedAcct').val();
+			console.log("rrr==", rrno);
+			console.log("amount due==", amtdue);
+			console.log("username==", usrname);
+			$('#amountDebitted').val(amtdue);
+			$('#rr').val(rrno);
+			$('#userx').val(usrname);
+			$('#debittedAccount').val(debacc);
+
+
+
+		});
+	</script>
+
+
+</body>
+
+
+</html>

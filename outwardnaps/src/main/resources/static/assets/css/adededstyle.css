@@ -1,0 +1,105 @@
+@font-face {
+        font-family: 'Lato', sans-serif;
+    }
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,    
+    p{
+       font-family: 'Lato', sans-serif;
+        font-size: 14px!important;
+        
+    }
+    body{
+      background-color:#F3F3F9!important;
+    }
+    a{
+      color: #FF8200!important;
+    }
+    a:hover{
+      color:#FF002B!important;
+    }
+    a.disabled { color:gray; }
+    	#employee_detail th{color:#A7674C}
+
+.btn.btn-primary,
+.show > .btn.btn-primary {
+    background-color: #000000;
+    border-color: #000000;
+    border-radius:20px;
+    color: #fff!important;
+    min-width: 130px;
+}
+
+.btn.btn-primary:hover, .btn.btn-primary:active,
+.show > .btn.btn-primary:hover,
+.show > .btn.btn-primary:active {
+    background-color: #FF002B;
+    border-color: #FF002B;
+}
+    	.btn.btn-primary:hover:active, .btn.btn-primary:focus, .btn.btn-primary.active,
+.show > .btn.btn-primary:hover:active,
+.show > .btn.btn-primary:focus,
+.show > .btn.btn-primary.active {
+    background: #FF8200 !important;
+    border-color: #FF8200 !important;
+}
+
+.air__l2__head{
+  color: #333!i;
+}
+.cmbfooter{
+  clear: both;
+  background-color: #fff;
+  border-top:#DDDDE0 1px solid;
+  padding: 25px 0;
+  text-align: center;
+  color: #787878;
+}
+.logwrap .cmbfooter{
+      position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.cmbfooter span{
+  color: #000;
+}
+.logologin{
+  padding: 6% 0 30px 0;
+  text-align: center;
+}
+.logologin img{
+  height: 22px;
+}
+.logwrap h5{
+  padding-bottom: 10px;
+}
+.air__auth__container p{
+  font-size: 12px!important;
+  padding:5px 0;
+}
+.isa_error{
+  color: #D8000C;
+    background-color: #FFBABA;
+    margin:10px 0;
+    padding: 7px 15px;
+    border-radius: 4px;
+    line-height: 15px;
+}
+h5.card-title{
+  font-size: 20px!important;
+}
+h4.card-title{
+  font-size: 25px!important;
+}
+
+@media screen and (max-width: 995px), 
+       screen and (max-height: 600px) {
+  .logwrap .cmbfooter {
+    position: relative;
+    bottom: auto;
+
+}

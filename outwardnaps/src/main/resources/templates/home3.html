@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="ISO-8859-1" name="viewport"
+	content="width=device-width, initial-scale=1.0"></meta>
+<title>Outward NAPS Portal</title>
+<!-- Bootstrap -->
+<link type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"
+	media="screen"/>
+<link rel="icon" type="image/x-icon" href="img/Capture2.jpg" />
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse" style="margin-top: 0cm; margin-bottom: 0cm;">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/login"> </a>
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Outward NAPS</a>
+			</div>
+			<input type="hidden" name="username" th:value="${session.username}" />
+			<input type="hidden" name="username" th:value="${session.role}" />
+			<input type="hidden" name="sessionId" th:value="${session.sessionId}" />
+			<input type="hidden" name="sessionObj" th:value="${session}" /> <input
+				type="hidden" name="sessionObj" th:value="${session.userrole}" />
+			<ul class="nav navbar-nav">
+				<li class="active"><a th:href="@{/loginHome(userName=${session.username})}">Home</a></li>
+				<li class="dropdown" th:switch="${session.role}"><a
+					href="#" data-toggle="dropdown" class="dropdown-toggle">Menu
+						Items<b class="caret"></b>
+				</a>
+					<p th:case="'INITIATOR'">
+					<ul class="dropdown-menu">
+						<li><a href="#"
+							th:href="@{/bidding(urlDetail=${T(com.cmb.paymentfw.service.SampleAESCrypter).getUrlDetails()})}">Bid</a></li>
+					</ul>
+					</p>
+					<p th:case="'AUTHORIZER'">
+					<ul class="dropdown-menu">
+						<li><a href="#" th:href="@{/reportPage}">Bidding Report</a></li>
+						<li><a href="#" th:href="@{/itemSearch}">Item Management</a></li>
+					</ul>
+					</p>
+					<p th:case="'Admin'">
+					<ul class="dropdown-menu">
+						<li><a href="#" th:href="@{/user}">User Creation</a></li>
+						<li><a href="#" th:href="@{/UserRole}">Role Creation</a></li>
+					</ul>
+					</p>
+					<p th:case="'Super Admin'">
+					<ul class="dropdown-menu">
+						<li><a href="#" th:href="@{/user}">User Creation</a></li>
+						<li><a href="#" th:href="@{/UserRole}">Role Creation</a></li>
+					</ul>
+					</p></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+						Sign Up</a></li>
+				<li><a th:href="@{/}"><span
+						class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- <div class="container">
+		<h3>Right Aligned Navbar</h3>
+		<p>The .navbar-right class is used to right-align navigation bar
+			buttons.</p>
+	</div> -->
+	<div class="col-md-6" layout:fragment="content">
+		<h1>Welcome to Coronation Merchant Bank Outward NAPS Portal</h1></div>
+	<!--div class="jumbotron hero-technology" layout:fragment="content">
+		<h1 class="hero-title">Coronation Merchant Bank Asset Management
+			Portal</h1>
+		<p class="hero-subtitle">This Portal is used for On-boarding and
+			payment. Use the above Menu.</p>
+
+	</div-->
+	<!-- /div> -->
+
+	<!-- <div layout:fragment="footer" th:replace="/fragments/footer :: footer">&copy; 2017 CMB
+		Application Development</div>-->
+
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
